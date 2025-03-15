@@ -108,7 +108,7 @@ void downloadFile(String content, String fileName) {
       );
       return;
     }
-    String temp = "pielgrzymi_${date_now()}.txt";
+    //String temp = "pielgrzymi_${date_now()}.txt";
     // Formatting data for the text file
     StringBuffer txtContent = StringBuffer();
     txtContent.writeln('Lista Pielgrzymów\n--------------------------');
@@ -124,6 +124,7 @@ void downloadFile(String content, String fileName) {
       txtContent.writeln('Sobota: ${doc['sobota'] ? "Yes" : "No"}');
       txtContent.writeln('--------------------------------');
     }
+    String temp = "pielgrzymi_${date_now()}.txt";
     downloadFile(txtContent.toString(), temp);
   }
 

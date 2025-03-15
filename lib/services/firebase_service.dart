@@ -51,14 +51,16 @@ class FirebaseService {
       'email': email,
       'telefon': phone,
       'ukonczyl_16': isOver16,
-      if (spiritualOrPhysical == 'Fizyczny') 'piatek': attendsFriday,
-      if (spiritualOrPhysical == 'Fizyczny') 'sobota': attendsSaturday,
+
       'akceptuje_regulamin': acceptsRules,
       'akceptuje_RODO': acceptsRODO,
       'sposob_uczestnictwa': spiritualOrPhysical,
       'rola': selectedRole, // 🔹 Zapisujemy rolę pielgrzyma
       'Zaplacil(null-zwolniony,false-nie_zaplacil,true-zaplacil)': hasPaidFee,
-      if(whoregister =='Rodzic') 'imie_rodzica': parentname, 
+      if (whoregister == 'Rodzic') 'imie_rodzica': parentname,
+      
+      if (spiritualOrPhysical == 'fizycznie') 'piatek': attendsFriday,
+      if (spiritualOrPhysical == 'fizycznie') 'sobota': attendsSaturday,
       'timestamp': FieldValue.serverTimestamp(),
     });
 
