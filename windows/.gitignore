@@ -7,7 +7,7 @@ flutter/ephemeral/
 *.sln.docstates
 
 # User-specific files
-lib/texts/keys.dart
+keys.dart
 # Visual Studio build-related files.
 x64/
 x86/
