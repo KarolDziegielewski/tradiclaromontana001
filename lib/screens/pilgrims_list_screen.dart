@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:convert';
 import 'package:intl/intl.dart';
+import 'package:flutter/foundation.dart';
 
-import 'dart:io';
-import 'package:path_provider/path_provider.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
+
+import 'dart:html' as html;
+
 // ignore: deprecated_member_use, avoid_web_libraries_in_flutter
 
 
@@ -26,25 +29,20 @@ class _PilgrimsListScreenState extends State<PilgrimsListScreen> {
     return formattedDate;
   }
 
-Future<void> downloadFile(String content, String fileName) async {
-  try {
-    // Pobranie katalogu "Pobrane" dla Windows
-    final directory = await getDownloadsDirectory();
-    
-    if (directory == null) {
-      print("Błąd: Nie można uzyskać katalogu pobierania.");
-      return;
-    }
-
-    // Tworzenie pliku w katalogu Pobrane
-    final filePath = '${directory.path}\\$fileName'; // Użycie `\\` dla Windows
-    final file = File(filePath);
-    
-    await file.writeAsString(content, encoding: utf8);
-    
-    print("Plik został zapisany w: $filePath");
-  } catch (e) {
-    print("Błąd zapisu pliku: $e");
+void downloadFile(String content, String fileName) {
+  if (kIsWeb) {
+    final blob = html.Blob([utf8.encode(content)], 'text/plain');
+    final url = html.Url.createObjectUrlFromBlob(blob);
+    final anchor = html.AnchorElement()
+      ..href = url
+      ..setAttribute("download", fileName)
+      ..style.display = "none";
+    html.document.body!.append(anchor);
+    anchor.click();
+    html.Url.revokeObjectUrl(url);
+    anchor.remove();
+  } else {
+    print("This function is only available on web.");
   }
 }
 
