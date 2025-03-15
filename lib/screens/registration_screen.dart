@@ -13,7 +13,7 @@ import '../../widgets/donate_dialog.dart';
 import '../../widgets/payment_dialog.dart';
 
 class RegistrationScreen extends StatefulWidget {
-  const RegistrationScreen({Key? key, required String role}) : super(key: key);
+  const RegistrationScreen({super.key, required String role});
 
   @override
   _RegistrationScreenState createState() => _RegistrationScreenState();

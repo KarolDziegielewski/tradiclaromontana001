@@ -14,7 +14,7 @@ import 'dart:html' as html;
 class PilgrimsListScreen extends StatefulWidget {
   final String role; // Role of the user (admin or authenticator)
 
-  PilgrimsListScreen({required this.role});
+  const PilgrimsListScreen({super.key, required this.role});
 
   @override
   _PilgrimsListScreenState createState() => _PilgrimsListScreenState();

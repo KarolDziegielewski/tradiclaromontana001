@@ -4,6 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../screens/pilgrims_list_screen.dart'; // Import the PilgrimsListScreen
 
 class AdminLoginScreen extends StatefulWidget {
+  const AdminLoginScreen({super.key});
+
   @override
   _AdminLoginScreenState createState() => _AdminLoginScreenState();
 }
