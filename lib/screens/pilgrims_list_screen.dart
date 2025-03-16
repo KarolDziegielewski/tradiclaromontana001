@@ -63,7 +63,7 @@ void downloadFile(String content, String fileName) {
     StringBuffer txtContent = StringBuffer();
 
     for (var doc in snapshot.docs) {
-      txtContent.writeln('Email: ${doc['email']}');
+      txtContent.writeln('${doc['email']}');
     }
     String temp = "maile_pielgrzymow_${date_now()}.txt";
     downloadFile(txtContent.toString(), temp);
